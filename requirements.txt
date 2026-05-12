@@ -1,5 +1,5 @@
-streamlit
-numpy
-exifread
-pillow
 tensorflow-cpu
+streamlit
+exifread
+Pillow
+numpy
