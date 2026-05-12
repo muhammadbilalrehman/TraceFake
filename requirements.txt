@@ -1,0 +1,5 @@
+streamlit
+numpy
+exifread
+pillow
+tensorflow-cpu
