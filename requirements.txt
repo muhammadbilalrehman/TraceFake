@@ -1,5 +1,7 @@
+streamlit==1.35.0
+numpy==1.26.4
+pillow==10.3.0
 tensorflow-cpu==2.15.0
-streamlit
-exifread
-Pillow
-numpy<2.0.0
+h5py==3.10.0
+protobuf==3.20.3
+exifread==3.0.0
