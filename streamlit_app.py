@@ -10,12 +10,22 @@ st.set_page_config(page_title="TraceFake AI", page_icon="🛡️")
 # 2. Load Model (Cached to prevent reloading on every click)
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model(
-        "tracefake_clean.keras",
-        compile=False
-    )
+    class DenseWithQuantization(tf.keras.layers.Dense):
+        def __init__(self, *args, quantization_config=None, **kwargs):
+            super().__init__(*args, **kwargs)
+
+    try:
+        return tf.keras.models.load_model('model.h5')
+    except TypeError as err:
+        if 'quantization_config' in str(err):
+            return tf.keras.models.load_model(
+                'model.h5',
+                custom_objects={'Dense': DenseWithQuantization}
+            )
+        raise
 
 model = load_model()
+
 
 # 3. EXIF Extraction Function
 def get_metadata(file):
