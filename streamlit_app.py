@@ -11,7 +11,7 @@ st.set_page_config(page_title="TraceFake AI", page_icon="🛡️")
 @st.cache_resource
 def load_model():
     return tf.keras.models.load_model(
-        "tracefake_fixed.keras",
+        "tracefake_clean.keras",
         compile=False
     )
 
